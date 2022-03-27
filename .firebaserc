@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "private-bruh": {
+      "hosting": {
+        "private-notes": [
+          "private-bruh"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "private-bruh"
+  }
+}
