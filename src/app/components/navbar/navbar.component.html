@@ -1,0 +1,5 @@
+<nav class="navbar navbar-light p-3">
+  <div class="navbar-brand">Private Space</div>
+  <button *ngIf="!authService.authData.isLoggedIn" class="btn btn-primary" (click)="authService.loginWithGoogle()">Login with Google</button>
+  <button *ngIf="authService.authData.isLoggedIn" class="btn btn-danger" (click)="authService.logout()">Logout</button>
+</nav>
