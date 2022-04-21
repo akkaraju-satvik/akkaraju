@@ -1,2 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+body {
+  background: url('assets/bg.jpg');
+}
+
+.fadeInFast {
+  animation-duration: 0.5s;
+  animation-name: fadeIn;
+}
+.btn.btn-primary {
+  background-color: #51617E !important;
+  border-color: #51617E !important;
+  color: #fff;
+}
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}

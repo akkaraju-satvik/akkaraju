@@ -1,5 +1,5 @@
-<nav class="navbar navbar-light p-3">
-  <div class="navbar-brand">Private Space</div>
+<nav class="navbar navbar-light fixed-top fadeInFast p-3">
+  <a class="navbar-brand" style="font-family: 'Josefin Sans'; font-size: 1.5rem;" routerLink="/">Space in the Mind</a>
   <button *ngIf="!authService.authData.isLoggedIn" class="btn btn-primary" (click)="authService.loginWithGoogle()">Login with Google</button>
   <button *ngIf="authService.authData.isLoggedIn" class="btn btn-danger" (click)="authService.logout()">Logout</button>
 </nav>

@@ -56,7 +56,7 @@ export class AuthService {
             localStorage.setItem('authData', JSON.stringify(this.authData));
           })
         }
-        this.router.navigate(['/whoami']);
+        this.router.navigate(['/']);
       }
     ).catch((error) => {
       console.log(error);
