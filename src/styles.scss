@@ -6,28 +6,54 @@ html,body {
   height: 100%;
   background: url('assets/bg.jpg');
 }
-.mat-blue {
-  background: #38448b;
-  color: #fff;
-  &:hover {
+.mat {
+  &-blue {
     background: #38448b;
     color: #fff;
+    &:hover {
+      background: #38448b;
+      color: #fff;
+    }
+  }
+  &-white {
+    background: #fff;
+    color: #38448b;
+    &:hover {
+      background: #fff;
+      color: #38448b;
+    }
   }
 }
 .fadeInFast {
   animation-duration: 0.5s;
   animation-name: fadeIn;
 }
-.btn.btn-primary {
-  background-color: #51617E !important;
-  border-color: #51617E !important;
-  color: #fff;
+.btn {
+  &.btn-primary {
+    background-color: #51617E !important;
+    border-color: #51617E !important;
+    color: #fff;
+  }
+  &.btn-outline-primary {
+    background-color: #fff0 !important;
+    border-color: #51617E !important;
+    color: #51617E;
+  }
+  &:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 }
-.h-100vh {
-  height: 100vh !important;
-}
-.h-80vh {
-  height: 80vh !important;
+.h {
+  &-100vh {
+    height: 100vh !important;
+  }
+  &-80vh {
+    height: 80vh !important;
+  }
+  &-auto {
+    height: auto !important;
+  }
 }
 .card {
   border-radius: 12px;

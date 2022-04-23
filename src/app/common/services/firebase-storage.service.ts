@@ -15,6 +15,8 @@ export class FirebaseStorageService {
   constructor() { }
 
   getAllItems() {
+    this.storageItems = []
+    this.storagePrefixes = []
     const storage = getStorage();
     const storageRef = ref(storage);
     const items = listAll(storageRef)
@@ -24,9 +26,11 @@ export class FirebaseStorageService {
       res.items.map(async (item: any, index: any) => {
         item.url = await getDownloadURL(item)
         item.metadata = await getMetadata(item)
+        let time = item.metadata.timeCreated
         item.metadata.timeCreated = new Date(item.metadata.timeCreated).toLocaleString('en-GB')
         this.storageItems.push(item)
         if(index === res.items.length - 1) {
+          this.storageItems.sort((a: any, b: any) => a.metadata.timeCreated > b.metadata.timeCreated ? 1 : -1)
           this.storageItemsLoad = false;
         }
         // console.log(this.storageItems);
