@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/common/services/auth.service';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-navbar',

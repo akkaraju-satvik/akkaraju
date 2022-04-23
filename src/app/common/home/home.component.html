@@ -1,4 +1,4 @@
-<div class="container fadeInFast" style="height: 90vh;">
+<div class="container fadeInFast" >
   <div class="row my-3 fadeInFast" *ngIf="authService.authData.isLoggedIn">
     <ng-container *ngIf="authService.authData.user.role === 'admin'">
       <h1 class="text-center">Hello Satvik 👋</h1>
@@ -6,10 +6,10 @@
     <ng-container *ngIf="authService.authData.user.role === 'user'">
       <h1 class="text-center my-3">Hello there 👋</h1>
       <div class="d-flex justify-content-center align-items-center fadeInFast">
-        <div class="col-4 my-3">
+        <div class="col-12 col-md-6 col-lg-4 my-3">
           <div class="card p-2 text-center ">
             <div class="card-body d-flex flex-column justify-content-center align-items-center">
-              <h5 class="card-title mb-3">Welcome to Space in the Mind <br><small style="font-size: 1rem;">&copy;<u>Akkaraju Satvik</u></small></h5>
+              <h5 class="card-title mb-3">Welcome to Code on my Mind <br><small style="font-size: 1rem;">&copy;<u>Akkaraju Satvik</u></small></h5>
               <p class="card-text">
                 This website is currently under construction. You shall receive a notification when it is ready.
               </p>
@@ -28,11 +28,11 @@
       </div>
     </ng-container>
   </div>
-  <div class="d-flex justify-content-center align-items-center fadeInFast" *ngIf="!authService.authData.isLoggedIn">
-    <div class="col-4">
+  <div class="row d-flex justify-content-center align-items-center h-80vh fadeInFast" *ngIf="!authService.authData.isLoggedIn">
+    <div class="col-12 col-md-6 col-lg-4">
       <div class="card p-2 text-center ">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-          <h5 class="card-title mb-3">Welcome to Space in the Mind <br><small style="font-size: 1rem;">&copy;<u>Akkaraju Satvik</u></small></h5>
+          <h5 class="card-title mb-3">Welcome to Code on my Mind <br><small style="font-size: 1rem;">&copy;<u>Akkaraju Satvik</u></small></h5>
           <p class="card-text">
             This website is currently under construction. Login to get a notification when it is ready.
           </p>

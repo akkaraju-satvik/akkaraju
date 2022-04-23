@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CommonRoutingModule } from './common-routing.module';
-import { AppComponent } from '../app.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { ManageComponent } from './manage/manage.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     CommonModule,
-    CommonRoutingModule
+    CommonRoutingModule,
+    MaterialModule
   ],
   exports: [
     NavbarComponent
