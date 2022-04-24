@@ -9,7 +9,7 @@ import { FirebaseStorageService } from '../services/firebase-storage.service';
 })
 export class UploadPopupComponent implements OnInit {
 
-  constructor(public firebaseStorageService: FirebaseStorageService, public dialog: MatDialog, public dialogRefSelf: MatDialogRef<UploadPopupComponent>) { }
+  constructor(public firebaseStorageService: FirebaseStorageService, public dialog: MatDialog, public dialogRefSelf: MatDialogRef<UploadPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
   ngOnInit(): void {
@@ -20,13 +20,16 @@ export class UploadPopupComponent implements OnInit {
 
   openConfirmationPopup(event: any) {
     this.firebaseStorageService.fileName = event.target.files[0].name;
+    console.log(event.target.files[0])
+    let x = this.data
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
       data: {
+        ...x,
         fileName: event.target.files[0].name
       }
     })
     dialogRef.afterClosed().subscribe(result => {
-      if(result === 'upload') {
+      if(result === 'success') {
         console.log(event.target.files[0])
         this.dialogRefSelf.close(event.target.files[0])
       } else if(result === 'cancel') {
@@ -47,7 +50,7 @@ export class ConfirmationPopupComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data)
   }
-
+  
   close(action: any) {
     console.log(action)
     this.dialogRef.close(action)

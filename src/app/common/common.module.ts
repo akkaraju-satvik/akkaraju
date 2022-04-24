@@ -6,7 +6,7 @@ import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule } from '../material/material.module';
-import { UploadPopupComponent } from './popup/popup.component';
+import { ConfirmationPopupComponent, UploadPopupComponent } from './popup/popup.component';
 import { FormsModule } from '@angular/forms';
 
 
@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     ErrorComponent,
     HomeComponent,
     NavbarComponent,
-    UploadPopupComponent
+    UploadPopupComponent,
+    ConfirmationPopupComponent
   ],
   imports: [
     CommonModule,
