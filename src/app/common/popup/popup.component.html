@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <input class="col" [(ngModel)]="firebaseStorageService.fileName" readonly disabled type="text">
+    <div class="col-auto upload-btn-wrapper" (change)="openConfirmationPopup($event)">
+      <input type="file" name="avatar" accept="file/*">
+      <button mat-stroked-button file class="btn btn-primary">Upload File</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <small>{{firebaseStorageService.uploadProgress || '0'}}% of the file uploaded</small>
+    </div>
+  </div>
+</div>

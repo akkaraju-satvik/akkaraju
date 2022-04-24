@@ -9,32 +9,47 @@ export class FirebaseStorageService {
 
   storageItems: any = []
   storageItemsLoad: boolean = false
+  
   storagePrefixes: any = []
   storagePrefixesLoad: boolean = false
 
+  currentPrefix: any
+  uploadProgress: any
+  fileName: any = ''
+  uploadLoad: boolean = false;
+
   constructor() { }
+
+  download(file: any) {
+    getDownloadURL(file).then((url: any) => {
+      console.log(url, 'url')
+      window.open(url, '_blank')
+    })
+  }
 
   getAllItems() {
     this.storageItems = []
     this.storagePrefixes = []
     const storage = getStorage();
     const storageRef = ref(storage);
+    this.currentPrefix = storageRef
     const items = listAll(storageRef)
     this.storageItemsLoad = true;
     from(items).subscribe((res: any) => {
       console.log(res)
-      res.items.map(async (item: any, index: any) => {
-        item.url = await getDownloadURL(item)
-        item.metadata = await getMetadata(item)
-        let time = item.metadata.timeCreated
-        item.metadata.timeCreated = new Date(item.metadata.timeCreated).toLocaleString('en-GB')
+      res.items.length > 0 && res.items.map(async (item: any, index: any) => {
+        // item.url = await getDownloadURL(item)
+        // item.metadata = await getMetadata(item)
+        // let time = item.metadata.timeCreated
+        // item.metadata.timeCreated = new Date(item.metadata.timeCreated).toLocaleString('en-GB')
         this.storageItems.push(item)
         if(index === res.items.length - 1) {
-          this.storageItems.sort((a: any, b: any) => a.metadata.timeCreated > b.metadata.timeCreated ? 1 : -1)
+          // this.storageItems.sort((a: any, b: any) => a.metadata.timeCreated > b.metadata.timeCreated ? 1 : -1)
           this.storageItemsLoad = false;
         }
         // console.log(this.storageItems);
       })
+      res.items.length === 0 && (this.storageItemsLoad = false)
     })
     this.storagePrefixesLoad = true
     from(items).subscribe((res: any) => {
@@ -43,15 +58,19 @@ export class FirebaseStorageService {
     })
   }
 
-  uploadFile(event: any) {
-    console.log(event.target.files, 'file')
-    let file = event.target.files[0]
+  uploadFile(file: any) {
+    console.log(file)
     const storage = getStorage();
-    const storageRef = ref(storage, file.name);
+    const storageRef = ref(storage, this.currentPrefix._location.path+'/'+file.name);
     const uploadTask = uploadBytesResumable(storageRef, file);
-
+    console.log(storageRef, 'storageRef')
+    this.uploadLoad = true
+    this.storageItemsLoad = true
+    this.storagePrefixesLoad = true
+    this.storageItems = []
+    this.storagePrefixes = []
     uploadTask.on('state_changed', (snapshot: any) => {
-      // Observe state change events such as progress, pause, and resume
+      // Observe state change files such as progress, pause, and resume
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       console.log('Upload is ' + progress + '% done');
@@ -77,16 +96,13 @@ export class FirebaseStorageService {
           break;
       }
     }, () => {
-      // Handle successful uploads on complete
-      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-      getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-        console.log('File available at', downloadURL);
-        this.getAllItems()
-      });
+      this.uploadLoad = false
+      this.getPrefixFiles(this.currentPrefix)
     })
   }
 
   getPrefixFiles(prefix: any) {
+    this.currentPrefix = prefix
     console.log(prefix, 'prefix')
     this.storagePrefixes = []
     this.storageItems = []
@@ -105,10 +121,11 @@ export class FirebaseStorageService {
     from(items).subscribe((res: any) => {
       console.log(res, 'pref files');
       (res.items.length > 0) && res.items.map(async (item: any, index: any) => {
-        item.url = await getDownloadURL(item)
-        item.metadata = await getMetadata(item)
-        item.metadata.timeCreated = new Date(item.metadata.timeCreated).toLocaleString('en-GB')
+        // item.url = await getDownloadURL(item)
+        // item.metadata = await getMetadata(item)
+        // item.metadata.timeCreated = new Date(item.metadata.timeCreated).toLocaleString('en-GB')
         this.storageItems.push(item)
+        console.log(this.storageItems)
         if(index === res.items.length - 1) {
           this.storageItemsLoad = false;
         }
@@ -121,6 +138,7 @@ export class FirebaseStorageService {
       this.storagePrefixes.push(...res.prefixes)
       console.log(this.storagePrefixes)
       this.storagePrefixesLoad = false;
+      console.log(this.storagePrefixesLoad, 'storagePrefixesLoad')
     })
     console.log(this.storagePrefixes, 'prefixes')
     console.log(this.storageItems, 'items')

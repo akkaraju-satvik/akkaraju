@@ -31,9 +31,7 @@ export class AuthService {
         };
         // Check if user in Users collection
         const users = await getDocs(query(collection(this.firestore, 'Users'), where('email', '==', user.email)));
-        const userExists = !users.empty;
-        console.log(userExists, users);
-        if(!userExists) {
+        if(users.empty) {
           await addDoc(collection(this.firestore, 'Users'), newUser).then(
             async (docRef) => {
               const usersCollection = collection(this.firestore, 'Users');
@@ -46,6 +44,7 @@ export class AuthService {
               })
             }
           );
+          this.router.navigate(['/home']);
         } else {
           const usersCollection = collection(this.firestore, 'Users');
           const queryForUser = query(usersCollection, where('email', '==', user.email));
@@ -55,8 +54,8 @@ export class AuthService {
             this.authData.isLoggedIn = true;
             localStorage.setItem('authData', JSON.stringify(this.authData));
           })
+          this.authData.user.role === 'admin' ? this.router.navigate(['/admin']) : this.router.navigate(['/home']);
         }
-        this.router.navigate(['/']);
       }
     ).catch((error) => {
       console.log(error);

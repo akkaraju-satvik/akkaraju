@@ -1,3 +1,38 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$private-notes-primary: mat.define-palette(mat.$indigo-palette);
+$private-notes-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$private-notes-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$private-notes-theme: mat.define-light-theme((
+  color: (
+    primary: $private-notes-primary,
+    accent: $private-notes-accent,
+    warn: $private-notes-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($private-notes-theme);
+
 /* You can add global styles to this file, and also import other style files */
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
@@ -24,6 +59,16 @@ html,body {
     }
   }
 }
+.pt {
+  &-10vh {
+    padding-top: 10vh !important;
+  }
+  &-sm-15vh {
+    @media (max-width: 768px) {
+      padding-top: 15vh !important;
+    }
+  }
+}
 .fadeInFast {
   animation-duration: 0.5s;
   animation-name: fadeIn;
@@ -33,11 +78,19 @@ html,body {
     background-color: #51617E !important;
     border-color: #51617E !important;
     color: #fff;
+    &:active, &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
   }
   &.btn-outline-primary {
     background-color: #fff0 !important;
     border-color: #51617E !important;
     color: #51617E;
+    &:active, &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
   }
   &:active {
     outline: none !important;
