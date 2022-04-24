@@ -110,8 +110,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "private-notes:build:production",
-            "firebaseProject": "private-bruh",
-            "firebaseHostingSite": "private-bruh"
+            "firebaseProject": "code-on-my-mind",
+            "firebaseHostingSite": "code-on-my-mind"
           }
         }
       }

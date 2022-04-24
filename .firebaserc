@@ -1,14 +1,14 @@
 {
   "targets": {
-    "private-bruh": {
+    "code-on-my-mind": {
       "hosting": {
         "private-notes": [
-          "private-bruh"
+          "code-on-my-mind"
         ]
       }
     }
   },
   "projects": {
-    "default": "private-bruh"
+    "default": "code-on-my-mind"
   }
 }
