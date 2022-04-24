@@ -20,8 +20,8 @@ export class AuthGuard implements CanActivate {
     } else {
       console.log(state, 'state')
       if(this.authService.authData.user.role === 'admin') {
-        this.router.navigate(['admin'])
-        return false;
+        // this.router.navigate(['admin'])
+        return true;
       }
       if(route.data['path'] === 'home') return true;
       return false;
