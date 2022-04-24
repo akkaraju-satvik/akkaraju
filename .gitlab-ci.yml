@@ -1,0 +1,17 @@
+stages:
+  - deploy
+
+before_script:
+  - apt update
+  - npm install -g firebase-tools
+
+deploy-master:
+  stage: deploy
+  only:
+    refs:
+      - master
+  script:
+    - npm install
+    - ng build --prod
+    - firebase deploy --only hosting
+    - echo "DEPLOY SUCCESSFUL"
