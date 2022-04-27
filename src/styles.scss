@@ -36,6 +36,9 @@ $private-notes-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import '~quill/dist/quill.snow.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.core.css';
 
 html,body {
   height: 100%;
@@ -108,9 +111,6 @@ html,body {
     height: auto !important;
   }
 }
-.card {
-  border-radius: 12px;
-}
 @keyframes fadeIn {
   0% {
       opacity: 0;
@@ -119,5 +119,11 @@ html,body {
       opacity: 1;
   }
 }
+
+.bg-card {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
