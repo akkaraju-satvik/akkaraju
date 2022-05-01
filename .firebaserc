@@ -1,14 +1,14 @@
 {
+  "projects": {
+    "default": "code-on-my-mind"
+  },
   "targets": {
     "code-on-my-mind": {
       "hosting": {
-        "private-notes": [
+        "code-on-my-mind": [
           "code-on-my-mind"
         ]
       }
     }
-  },
-  "projects": {
-    "default": "code-on-my-mind"
   }
 }

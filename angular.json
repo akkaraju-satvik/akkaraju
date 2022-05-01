@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "private-notes": {
+    "code-on-my-mind": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/private-notes",
+            "outputPath": "dist/code-on-my-mind",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "private-notes:build:production"
+              "browserTarget": "code-on-my-mind:build:production"
             },
             "development": {
-              "browserTarget": "private-notes:build:development"
+              "browserTarget": "code-on-my-mind:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "private-notes:build"
+            "browserTarget": "code-on-my-mind:build"
           }
         },
         "test": {
@@ -109,7 +109,7 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "private-notes:build:production",
+            "browserTarget": "code-on-my-mind:build:production",
             "firebaseProject": "code-on-my-mind",
             "firebaseHostingSite": "code-on-my-mind"
           }
@@ -117,5 +117,5 @@
       }
     }
   },
-  "defaultProject": "private-notes"
+  "defaultProject": "code-on-my-mind"
 }

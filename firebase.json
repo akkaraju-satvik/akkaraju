@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "target": "private-notes",
-    "public": "dist/private-notes",
+    "target": "code-on-my-mind",
+    "public": "dist/code-on-my-mind",
     "ignore": [
       "**/.*"
     ],
