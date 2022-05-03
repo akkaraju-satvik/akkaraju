@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { getStorage, ref, listAll, getDownloadURL, deleteObject, getMetadata, uploadBytesResumable } from '@angular/fire/storage';
 import { from } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class FirebaseStorageService {
   fileName: any = ''
   uploadLoad: boolean = false;
 
-  constructor() { }
+  constructor(private zone: NgZone) { }
 
   download(file: any) {
     getDownloadURL(file).then((url: any) => {
@@ -116,30 +116,35 @@ export class FirebaseStorageService {
     }
     const storage = getStorage();
     const storageRef = ref(storage, prefix);
-    const items = listAll(storageRef)
     this.storageItemsLoad = true
-    from(items).subscribe((res: any) => {
-      console.log(res, 'pref files');
-      (res.items.length > 0) && res.items.map(async (item: any, index: any) => {
-        // item.url = await getDownloadURL(item)
-        // item.metadata = await getMetadata(item)
-        // item.metadata.timeCreated = new Date(item.metadata.timeCreated).toLocaleString('en-GB')
-        this.storageItems.push(item)
-        console.log(this.storageItems)
-        if(index === res.items.length - 1) {
-          this.storageItemsLoad = false;
-        }
-        // console.log(this.storageItems);
-      });
-      res.items.length === 0 && (this.storageItemsLoad = false)
-    })
     this.storagePrefixesLoad = true
-    from(items).subscribe((res: any) => {
-      this.storagePrefixes.push(...res.prefixes)
-      console.log(this.storagePrefixes)
-      this.storagePrefixesLoad = false;
-      console.log(this.storagePrefixesLoad, 'storagePrefixesLoad')
-    })
+    this.zone.run(
+      () => {
+        listAll(storageRef).then((res: any) => {
+          console.log(res, 'res')
+          res.items.length > 0 && res.items.map(async (item: any, index: any) => {
+            this.storageItems.push(item)
+            if(index === res.items.length - 1) {
+              this.storageItemsLoad = false;
+            }
+          })
+          res.items.length === 0 && (this.storageItemsLoad = false)
+          res.prefixes.length > 0 && res.prefixes.map(async (item: any, index: any) => {
+            this.storagePrefixes.push(item)
+            if(index === res.prefixes.length - 1) {
+              this.storagePrefixesLoad = false;
+            }
+          })
+          res.prefixes.length === 0 && (this.storagePrefixesLoad = false)
+        })
+      }
+    )
+    // from(items).subscribe((res: any) => {
+    //   this.storagePrefixes.push(...res.prefixes)
+    //   console.log(this.storagePrefixes)
+    //   this.storagePrefixesLoad = false;
+    //   console.log(this.storagePrefixesLoad, 'storagePrefixesLoad')
+    // })
     console.log(this.storagePrefixes, 'prefixes')
     console.log(this.storageItems, 'items')
     console.log(this.storageItemsLoad, this.storagePrefixesLoad, 'load')
