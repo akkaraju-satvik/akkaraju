@@ -139,12 +139,6 @@ export class FirebaseStorageService {
         })
       }
     )
-    // from(items).subscribe((res: any) => {
-    //   this.storagePrefixes.push(...res.prefixes)
-    //   console.log(this.storagePrefixes)
-    //   this.storagePrefixesLoad = false;
-    //   console.log(this.storagePrefixesLoad, 'storagePrefixesLoad')
-    // })
     console.log(this.storagePrefixes, 'prefixes')
     console.log(this.storageItems, 'items')
     console.log(this.storageItemsLoad, this.storagePrefixesLoad, 'load')

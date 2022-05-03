@@ -1,8 +1,24 @@
 <div class="container fadeInFast">
   <div class="row mb-3">
-    <h5>Create Blog Post</h5>
+    <h5 class="col">Create Blog Post</h5>
+    <div class="col-auto">
+      <button mat-stroked-button class="col-auto btn btn-outline-danger btn-sm me-3">Discard</button>
+      <button mat-stroked-button class="col btn btn-outline-primary btn-sm">Save</button>
+    </div>
   </div>
-  <div class="bg-card">
-    <quill-editor></quill-editor>
+  <div class="bg-card-cover d-flex flex-column p-3">
+    <form [formGroup]="blogsService.blogFormGroup">
+      <mat-form-field class="col-6 p-0">
+        <mat-label>Blog Title</mat-label>
+        <input type="text" formControlName="title" matInput>
+      </mat-form-field>
+      <mat-form-field class="col-12 p-0">
+        <mat-label>Blog Description</mat-label>
+        <input type="text" matInput formControlName="description">
+      </mat-form-field>
+      <div class="bg-card">
+        <quill-editor></quill-editor>
+      </div>
+    </form>
   </div>
 </div>

@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { BlogsService } from '../services/blogs.service';
 
 @Component({
-  selector: 'app-create-blog',
-  templateUrl: './create-blog.component.html',
-  styleUrls: ['./create-blog.component.scss']
+  selector: 'app-blogs',
+  templateUrl: './blogs.component.html',
+  styleUrls: ['./blogs.component.scss']
 })
-export class CreateBlogComponent implements OnInit {
+export class BlogsComponent implements OnInit {
 
   constructor(public blogsService: BlogsService) { }
 
   ngOnInit(): void {
+    this.blogsService.getAllBlogs()
   }
 
 }

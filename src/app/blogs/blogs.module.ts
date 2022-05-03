@@ -6,17 +6,24 @@ import { BlogsDashboardComponent } from './blogs-dashboard/blogs-dashboard.compo
 import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { ViewBlogComponent } from './view-blog/view-blog.component';
 import { QuillModule } from 'ngx-quill';
+import { BlogsComponent } from './blogs/blogs.component';
+import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     BlogsDashboardComponent,
     CreateBlogComponent,
-    ViewBlogComponent
+    ViewBlogComponent,
+    BlogsComponent
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     BlogsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     QuillModule.forRoot()
   ]
 })

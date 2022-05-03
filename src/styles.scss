@@ -123,6 +123,13 @@ html,body {
 .bg-card {
   background-color: #fff;
   border-radius: 10px;
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
+  &-cover {
+    border-radius: 10px;
+    background-color: #fff6;
+  }
 }
 
 html, body { height: 100%; }
