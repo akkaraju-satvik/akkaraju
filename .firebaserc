@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "code-on-my-mind"
+    "default": "akkaraju-satvik"
   },
   "targets": {
-    "code-on-my-mind": {
+    "akkaraju-satvik": {
       "hosting": {
-        "code-on-my-mind": [
-          "code-on-my-mind"
+        "akkaraju-satvik": [
+          "akkaraju-satvik"
         ]
       }
     }

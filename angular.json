@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "code-on-my-mind": {
+    "akkaraju-satvik": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/code-on-my-mind",
+            "outputPath": "dist/akkaraju-satvik",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "code-on-my-mind:build:production"
+              "browserTarget": "akkaraju-satvik:build:production"
             },
             "development": {
-              "browserTarget": "code-on-my-mind:build:development"
+              "browserTarget": "akkaraju-satvik:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "code-on-my-mind:build"
+            "browserTarget": "akkaraju-satvik:build"
           }
         },
         "test": {
@@ -109,13 +109,13 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "code-on-my-mind:build:production",
-            "firebaseProject": "code-on-my-mind",
-            "firebaseHostingSite": "code-on-my-mind"
+            "browserTarget": "akkaraju-satvik:build:production",
+            "firebaseProject": "akkaraju-satvik",
+            "firebaseHostingSite": "akkaraju-satvik"
           }
         }
       }
     }
   },
-  "defaultProject": "code-on-my-mind"
+  "defaultProject": "akkaraju-satvik"
 }
