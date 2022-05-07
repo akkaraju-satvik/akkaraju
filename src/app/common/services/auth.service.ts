@@ -29,6 +29,7 @@ export class AuthService {
           access: 'denied',
           role: 'user'
         };
+        const token = await user.getIdToken();
         // Check if user in Users collection
         const users = await getDocs(query(collection(this.firestore, 'Users'), where('email', '==', user.email)));
         if(users.empty) {
@@ -40,6 +41,7 @@ export class AuthService {
               queryResponse.forEach((doc) => {
                 this.authData.user = {id: doc.id, ...doc.data()};
                 this.authData.isLoggedIn = true;
+                this.authData.token = token;
                 localStorage.setItem('authData', JSON.stringify(this.authData));
               })
             }
@@ -52,6 +54,7 @@ export class AuthService {
           queryResponse.forEach((doc) => {
             this.authData.user = {id: doc.id, ...doc.data()};
             this.authData.isLoggedIn = true;
+            this.authData.token = token;
             localStorage.setItem('authData', JSON.stringify(this.authData));
           })
           this.authData.user.role === 'admin' ? this.router.navigate(['/admin']) : this.router.navigate(['/home']);
