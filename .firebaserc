@@ -1,12 +1,16 @@
 {
   "projects": {
-    "default": "akkaraju-satvik"
+    "default": "akkaraju-satvik",
+    "dev": "akkaraju-satvik"
   },
   "targets": {
     "akkaraju-satvik": {
       "hosting": {
         "akkaraju-satvik": [
           "akkaraju-satvik"
+        ],
+        "akkarajusatvik": [
+          "akkarajusatvik"
         ]
       }
     }
