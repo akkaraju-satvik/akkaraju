@@ -2,7 +2,7 @@ name: Build & Deploy Angular Application to Firebase
 
 on:
   push:
-    branches: [master] # Only trigger on master
+    branches: [main] # Only trigger on master
 
 jobs:
   build:
