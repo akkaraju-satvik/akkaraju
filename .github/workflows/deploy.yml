@@ -17,6 +17,9 @@ jobs:
       - run: npm run build
       - uses: w9jds/firebase-action@v2.0.0
         with:
+          args: use default
+      - uses: w9jds/firebase-action@v2.0.0
+        with:
           args: deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
