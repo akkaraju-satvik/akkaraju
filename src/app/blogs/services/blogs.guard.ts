@@ -24,6 +24,8 @@ export class BlogsGuard implements CanActivate {
           return false;
         }
         return true;
+      } else if (route.data['path'] === 'blogs') {
+        return true;
       } else {
         this.router.navigate(['/blogs'])
         return false;

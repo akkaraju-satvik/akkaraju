@@ -40,6 +40,12 @@ $private-notes-theme: mat.define-light-theme((
 @import '~quill/dist/quill.bubble.css';
 @import '~quill/dist/quill.core.css';
 
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,body {
   height: 100%;
   background: url('assets/bg.jpg');
@@ -131,6 +137,8 @@ html,body {
     background-color: #fff6;
   }
 }
+
+hr { margin: 0; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

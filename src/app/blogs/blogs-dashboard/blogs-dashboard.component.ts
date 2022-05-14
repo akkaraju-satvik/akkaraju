@@ -15,8 +15,4 @@ export class BlogsDashboardComponent implements OnInit {
     this.blogsService.getAllBlogs()
   }
 
-  navigateToCreate() {
-    this.router.navigate(['/blogs/create']);
-  }
-
 }

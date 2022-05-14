@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light fixed-top fadeInFast p-3">
-  <a class="col-sm-12 col-md-3 navbar-brand" style="font-family: 'Josefin Sans'; font-size: 1.5rem;" routerLink="/">Code on my Mind</a>
+  <a class="col-auto navbar-brand" style="font-family: 'Josefin Sans'; font-size: 1.5rem;" routerLink="/">Code on my Mind</a>
   <button mat-raised-button *ngIf="!authService.authData.isLoggedIn" class="btn btn-primary btn-sm my-2" (click)="authService.loginWithGoogle()">Login with Google</button>
   <button mat-stroked-button *ngIf="authService.authData.isLoggedIn" class="btn btn-outline-danger" (click)="authService.logout()">Logout</button>
 </nav>

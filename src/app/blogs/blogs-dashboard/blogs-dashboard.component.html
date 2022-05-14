@@ -1,11 +1,30 @@
 <div class="container fadeInFast">
-  <div class="row m-3">
-    <div class="col-12 col-md-4 col-lg-2 bg-card">
+  <div class="row align-items-center m-3">
+    <div class="col-auto">
+      <a routerLink="/admin">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+          <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+        </svg>
+      </a>
+    </div>
+    <h5 class="col-auto m-0">{{'Blogs Module' | uppercase}}</h5>
+    <hr class="col">
+  </div>
+  <div class="row pt-3 m-3">
+    <div class="col-12 col-md-4 col-lg-2 bg-card me-3">
       <div class="d-flex justify-content-center p-3 pb-0">
         <img src="assets/create.svg" class="img-fluid w-50" alt="Create Blog">
       </div>
       <div class="row d-flex justify-content-center align-items-center mt-3 border-top">
-        <a mat-button class="btn btn-sm" (click)="navigateToCreate()" routerLink="/blogs/create">Create</a>
+        <a mat-button class="btn btn-sm" routerLink="../create">Create</a>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-2 bg-card">
+      <div class="d-flex justify-content-center p-3 pb-0">
+        <img src="assets/quote.svg" class="img-fluid w-50" alt="Create Blog">
+      </div>
+      <div class="row d-flex justify-content-center align-items-center mt-3 border-top">
+        <a mat-button class="btn btn-sm" routerLink="../view-blogs">View Blogs</a>
       </div>
     </div>
   </div>

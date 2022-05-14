@@ -21,18 +21,17 @@ export class AuthService {
       async (userCredential: UserCredential) => {
         const user = userCredential.user;
         console.log(user);
-        let newUser = {
-          firstName: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL,
-          uid: user.uid,
-          access: 'denied',
-          role: 'user'
-        };
-        const token = await user.getIdToken();
         // Check if user in Users collection
         const users = await getDocs(query(collection(this.firestore, 'Users'), where('email', '==', user.email)));
         if(users.empty) {
+          let newUser = {
+            firstName: user.displayName,
+            email: user.email,
+            photoUrl: user.photoURL,
+            uid: user.uid,
+            access: 'denied',
+            role: 'user'
+          };
           await addDoc(collection(this.firestore, 'Users'), newUser).then(
             async (docRef) => {
               const usersCollection = collection(this.firestore, 'Users');
@@ -41,7 +40,6 @@ export class AuthService {
               queryResponse.forEach((doc) => {
                 this.authData.user = {id: doc.id, ...doc.data()};
                 this.authData.isLoggedIn = true;
-                this.authData.token = token;
                 localStorage.setItem('authData', JSON.stringify(this.authData));
               })
             }
@@ -54,7 +52,6 @@ export class AuthService {
           queryResponse.forEach((doc) => {
             this.authData.user = {id: doc.id, ...doc.data()};
             this.authData.isLoggedIn = true;
-            this.authData.token = token;
             localStorage.setItem('authData', JSON.stringify(this.authData));
           })
           this.authData.user.role === 'admin' ? this.router.navigate(['/admin']) : this.router.navigate(['/home']);
