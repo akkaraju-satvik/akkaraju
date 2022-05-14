@@ -18,6 +18,8 @@ jobs:
       - uses: w9jds/firebase-action@v2.0.0
         with:
           args: use default
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - uses: w9jds/firebase-action@v2.0.0
         with:
           args: deploy
