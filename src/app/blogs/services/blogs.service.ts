@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, Firestore, getDocs, orderBy, query, where } from '@angular/fire/firestore';
+import { addDoc, collection, Firestore, getDoc, getDocs, orderBy, query, where } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { deleteDoc } from '@firebase/firestore';
@@ -19,6 +19,8 @@ export class BlogsService {
   })
   currentBlog: any = null
   getBlogsLoad: boolean = false;
+
+  getBlogLoad: boolean = false;
 
   constructor(public firestore: Firestore, public router: Router) { }
 
@@ -50,6 +52,17 @@ export class BlogsService {
           console.log(res)
           this.router.navigate(['/blogs/view-blogs'])
         })
+      })
+    })
+  }
+
+  getBlog(blogID: any) {
+    const blog = query(collection(this.firestore, 'Blogs'), where('__name__', '==', blogID))
+    this.getBlogLoad = true
+    from(getDocs(blog)).subscribe((res) => {
+      res.forEach((blog) => {
+        this.currentBlog = {...blog.data(), id: blog.id}
+        this.getBlogLoad = false
       })
     })
   }

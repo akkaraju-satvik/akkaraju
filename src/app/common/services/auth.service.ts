@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   authData: any = {
-    user: {},
+    user: { role: 'user' },
     isLoggedIn: false
   }
 
@@ -66,7 +66,7 @@ export class AuthService {
   logout() {
     this.authFire.signOut().then(() => {
       this.authData.isLoggedIn = false;
-      this.authData.user = {};
+      this.authData.user = { role: 'user' };
       localStorage.removeItem('authData');
       this.router.navigate(['/']);
     })

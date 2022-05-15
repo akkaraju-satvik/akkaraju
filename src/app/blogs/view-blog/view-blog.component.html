@@ -1,4 +1,4 @@
-<div class="container fadeInFast">
+<div class="container fadeInFast" *ngIf="!blogsService.getBlogLoad">
   <div class="row d-flex align-items-center mb-3">
     <div class="col-auto">
       <a routerLink="../../view-blogs">
@@ -10,7 +10,14 @@
     <h5 class="col-auto m-0"> {{blogsService.currentBlog.title | titlecase}} </h5>
     <hr class="col">
     <small class="col-auto">Posted on {{blogsService.currentBlog.createdAt}}</small>
-    <button mat-stroked-button (click)="openPopup(blogsService.currentBlog)" class="col-auto btn btn-sm btn-outline-danger" *ngIf="authService.authData.user.role === 'admin'">Delete Blog</button>
+    <div class="col-auto">
+      <button mat-stroked-button class="btn btn-sm btn-outline-primary" (click)="openPopup('share')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+          <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+        </svg>
+      </button>
+    </div>
+    <button mat-stroked-button (click)="openPopup('delete')" class="col-auto btn btn-sm btn-outline-danger" *ngIf="authService.authData.user.role === 'admin'">Delete Blog</button>
   </div>
   <div class="row p-3">
     <div class="bg-card p-3 mb-3">

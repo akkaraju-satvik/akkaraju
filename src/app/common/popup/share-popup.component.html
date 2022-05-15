@@ -1,0 +1,16 @@
+  <div class="row mb-3">
+    <h5>Share Post</h5>
+  </div>
+  <div class="row no-gutters align-items-center">
+    <mat-form-field class="col-10" appearance="outline">
+      <mat-label>Share link</mat-label>
+      <input matInput readonly [value]="data.url">
+    </mat-form-field>
+    <div class="col-2">
+      <button mat-stroked-button (click)="copyToClipboard()" *ngIf="!copied" class="btn btn-outline-primary">Copy</button>
+      <button mat-stroked-button disabled *ngIf="copied" class="btn btn-outline-primary">Copied</button>
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <button mat-stroked-button class="col-auto btn btn-outline-danger" (click)="dialogRef.close()">Close</button>
+  </div>

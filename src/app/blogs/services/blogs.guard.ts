@@ -15,7 +15,7 @@ export class BlogsGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(!this.authService.authData.isLoggedIn) {
-      return false;
+      return true;
     } else {
       if(route.data['path'] === 'create') {
         return this.authService.authData.user.role === 'admin';
@@ -30,8 +30,9 @@ export class BlogsGuard implements CanActivate {
       } else if (route.data['path'] === 'view-blog') {
         if(this.blogsService.currentBlog) return true;
         else {
-          this.router.navigate(['/blogs/view-blogs'])
-          return false
+          this.blogsService.getBlog(route.params['id'])
+          // this.router.navigate(['/blogs/view-blogs'])
+          return true
         };
       } else {
         this.router.navigate(['/blogs'])

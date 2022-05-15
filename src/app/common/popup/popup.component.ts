@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { Clipboard } from '@angular/cdk/clipboard'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FirebaseStorageService } from '../services/firebase-storage.service';
 
@@ -56,4 +57,29 @@ export class ConfirmationPopupComponent implements OnInit {
     this.dialogRef.close(action)
   }
   
+}
+
+@Component({
+  selector: 'app-share-popup',
+  templateUrl: './share-popup.component.html',
+  styleUrls: ['share-popup.component.scss']
+})
+export class SharePopupComponent implements OnInit {
+  constructor(public dialogRef: MatDialogRef<SharePopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any, public clipboard: Clipboard) {  }
+
+  copied: boolean = false;
+
+  ngOnInit(): void {
+    this.dialogRef.updateSize('900px', '225px')
+    console.log(this.data)
+  }
+
+  copyToClipboard() {
+    this.copied = true;
+    setTimeout(() => {
+      this.copied = false;
+    }, 3000);
+    document.querySelector<HTMLInputElement>('input[matInput]')?.select();
+    this.clipboard.copy(this.data.url)
+  }
 }

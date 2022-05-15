@@ -13,7 +13,7 @@ export class AppComponent {
     if(localStorage.getItem('authData') !== null) {
       this.authService.authData = JSON.parse(localStorage.getItem('authData') || JSON.stringify({isLoggedIn: false}));
     } else {
-      this.authService.authData = {}
+      this.authService.authData = { isLoggedIn: false, user: {role: 'user'}}
     }
     document.addEventListener('scroll', () => {
       if(window.scrollY > 0) {
