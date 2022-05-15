@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BlogsService } from '../services/blogs.service';
 
 @Component({
@@ -8,10 +9,15 @@ import { BlogsService } from '../services/blogs.service';
 })
 export class BlogsComponent implements OnInit {
 
-  constructor(public blogsService: BlogsService) { }
+  constructor(public blogsService: BlogsService, public router: Router) { }
 
   ngOnInit(): void {
     this.blogsService.getAllBlogs()
+  }
+
+  goToBlog(blog: any) {
+    this.blogsService.currentBlog = blog
+    this.router.navigate(['blogs/view-blog', blog.id])
   }
 
 }

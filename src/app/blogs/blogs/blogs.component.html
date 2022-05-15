@@ -11,17 +11,24 @@
     <hr class="col">
     <button mat-stroked-button class="col-auto btn btn-sm btn-outline-primary ms-3" routerLink="../create">Create</button>
   </div>
-  <div class="row d-flex justify-content-center" *ngIf="blogsService.blogs.length > 0">
+  <div class="row d-flex p-3" *ngIf="!blogsService.getBlogsLoad && blogsService.blogs.length > 0">
     <ng-container *ngFor="let blog of blogsService.blogs">
-      <a routerLink="/blogs/view-blog/"></a>
-      <div class="col-3 bg-card me-2 mb-3 p-3">
-        <h6>{{blog.title}}</h6>
-      </div>
+      <a class="col-3 btn bg-card me-2 mb-3 p-3" (click)="goToBlog(blog)">
+        <div class="text-start">
+          <b>{{blog.title}}</b>
+          <p>{{(blog.description | slice:0:60) + (blog.description.length > 60 ? '...' : '')}}</p>
+        </div>
+      </a>
     </ng-container>
   </div>
-  <div class="row d-flex justify-content-center" *ngIf="blogsService.blogs.length === 0">
+  <div class="row d-flex justify-content-center" *ngIf="!blogsService.getBlogsLoad && blogsService.blogs.length === 0">
     <div class="col-4 bg-card mt-3 p-3 text-center">
       <h5 class="col-auto m-0">No blogs to show</h5>
     </div>
   </div>
+  <div class="d-flex flex-column justify-content-center align-items-center my-3" *ngIf="blogsService.getBlogsLoad">
+    <div class="spinner-border text-primary mb-3" role="status"></div>
+    <span>Fetching blogs</span>
+  </div>
+
 </div>
