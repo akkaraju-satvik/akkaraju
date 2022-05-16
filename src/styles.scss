@@ -44,6 +44,7 @@ $private-notes-theme: mat.define-light-theme((
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.4s ease-in-out;
 }
 
 html,body {

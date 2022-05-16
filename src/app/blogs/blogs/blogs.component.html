@@ -13,7 +13,7 @@
   </div>
   <div class="row d-flex p-3" *ngIf="!blogsService.getBlogsLoad && blogsService.blogs.length > 0">
     <ng-container *ngFor="let blog of blogsService.blogs">
-      <a class="col-3 btn bg-card me-2 mb-3 p-3" (click)="goToBlog(blog)">
+      <a class="col-12 col-md-3 btn bg-card me-2 mb-3 p-3" (click)="goToBlog(blog)">
         <div class="text-start">
           <b>{{blog.title}}</b>
           <p>{{(blog.description | slice:0:60) + (blog.description.length > 60 ? '...' : '')}}</p>
