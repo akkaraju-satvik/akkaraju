@@ -15,7 +15,9 @@ export class BlogsGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(!this.authService.authData.isLoggedIn) {
-      return true;
+      if(route.data['path'] === 'view-blog' || route.data['path'] === 'blogs') {
+        return true;
+      } else return false;
     } else {
       if(route.data['path'] === 'create') {
         return this.authService.authData.user.role === 'admin';

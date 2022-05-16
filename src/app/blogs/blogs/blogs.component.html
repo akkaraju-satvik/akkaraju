@@ -1,6 +1,6 @@
 <div class="container fadeInFast">
   <div class="row d-flex align-items-center mb-3">
-    <div class="col-auto">
+    <div class="col-auto" *ngIf="authService.authData.isLoggedIn">
       <a routerLink="../">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#666" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
           <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
@@ -9,7 +9,7 @@
     </div>
     <h5 class="col-auto m-0"> {{'View Blogs' | uppercase}} </h5>
     <hr class="col">
-    <button mat-stroked-button class="col-auto btn btn-sm btn-outline-primary ms-3" routerLink="../create">Create</button>
+    <button mat-stroked-button class="col-auto btn btn-sm btn-outline-primary ms-3" routerLink="../create" *ngIf="authService.authData.user.role === 'admin'">Create</button>
   </div>
   <div class="row d-flex p-3" *ngIf="!blogsService.getBlogsLoad && blogsService.blogs.length > 0">
     <ng-container *ngFor="let blog of blogsService.blogs">

@@ -5,14 +5,12 @@
         <div class="bg-card p-3 text-center">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <h5 class="mb-3">Welcome!<br><small style="font-size: 0.8rem;">&copy; Akkaraju Satvik</small></h5>
-            <p class="card-text" *ngIf="!authService.authData.isLoggedIn">
-              This website is currently under construction. Login to get a notification when it is ready.
+            <p class="card-text" *ngIf="!authService.authData.isLoggedIn || authService.authData.user.role === 'user'">
+              This website is currently under construction. Only blogs are available for now.
             </p>
-            <p class="card-text" *ngIf="authService.authData.isLoggedIn && authService.authData.user.role === 'user'">
-              This website is currently under construction. You shall receive a notification when it is ready.
-            </p>
-            <div class="d-flex justify-content-center align-items-center" *ngIf="authService.authData.isLoggedIn && authService.authData.user.role === 'admin'">
-              <button mat-button class="btn btn-primary btn-sm" routerLink="/admin">Go to Dashboard</button>
+            <div class="d-flex justify-content-center align-items-center">
+              <button mat-button class="btn btn-primary btn-sm" *ngIf="authService.authData.isLoggedIn && authService.authData.user.role === 'admin'" routerLink="/admin">Go to Dashboard</button>
+              <button mat-button class="btn btn-primary btn-sm" *ngIf="authService.authData.user.role === 'user'" routerLink="/blogs/view-blogs">Go to Blogs</button>
             </div>
           </div>
         </div>

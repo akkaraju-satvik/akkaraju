@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/common/services/auth.service';
 import { BlogsService } from '../services/blogs.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { BlogsService } from '../services/blogs.service';
 })
 export class BlogsComponent implements OnInit {
 
-  constructor(public blogsService: BlogsService, public router: Router) { }
+  constructor(public blogsService: BlogsService, public router: Router, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.blogsService.getAllBlogs()

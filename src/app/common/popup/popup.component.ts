@@ -72,7 +72,7 @@ export class SharePopupComponent implements OnInit {
   ngOnInit(): void {
     this.dialogRef.updateSize('50vw', '22vh')
     if(window.outerWidth < 768) {
-      this.dialogRef.updateSize('70vw', '275px')
+      this.dialogRef.updateSize('70vw', '25vh')
     }
     console.log(this.data)
   }
