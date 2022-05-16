@@ -70,7 +70,7 @@ export class SharePopupComponent implements OnInit {
   copied: boolean = false;
 
   ngOnInit(): void {
-    this.dialogRef.updateSize('50vw', '225px')
+    this.dialogRef.updateSize('50vw', '22vh')
     if(window.outerWidth < 768) {
       this.dialogRef.updateSize('70vw', '275px')
     }
@@ -84,5 +84,9 @@ export class SharePopupComponent implements OnInit {
     }, 3000);
     document.querySelector<HTMLInputElement>('input[matInput]')?.select();
     this.clipboard.copy(this.data.url)
+  }
+
+  shareToWhatsapp() {
+    window.open(`https://wa.me/?text=${this.data.url}`, '_blank')
   }
 }
