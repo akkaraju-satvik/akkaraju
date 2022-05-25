@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/common/services/auth.service';
-import { FirebaseStorageService } from 'src/app/common/services/firebase-storage.service';
+import { FirebaseStorageService } from 'src/app/admin/services/firebase-storage.service';
 import { MatDialog } from '@angular/material/dialog'
 import { MatMenuTrigger } from '@angular/material/menu'
 import { ConfirmationPopupComponent, UploadPopupComponent } from 'src/app/common/popup/popup.component';

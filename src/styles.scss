@@ -51,6 +51,7 @@ html,body {
   height: 100%;
   background: url('assets/bg.jpg');
 }
+
 .mat {
   &-blue {
     background: #38448b;
@@ -69,6 +70,7 @@ html,body {
     }
   }
 }
+
 .pt {
   &-10vh {
     padding-top: 10vh !important;
@@ -79,10 +81,12 @@ html,body {
     }
   }
 }
+
 .fadeInFast {
   animation-duration: 0.5s;
   animation-name: fadeIn;
 }
+
 .btn {
   &.btn-primary {
     background-color: #51617E !important;

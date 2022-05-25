@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FirebaseStorageService } from '../services/firebase-storage.service';
+import { FirebaseStorageService } from '../../admin/services/firebase-storage.service';
 
 @Component({
   selector: 'app-upload-popup',

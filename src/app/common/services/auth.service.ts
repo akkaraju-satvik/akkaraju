@@ -29,7 +29,6 @@ export class AuthService {
             email: user.email,
             photoUrl: user.photoURL,
             uid: user.uid,
-            access: 'denied',
             role: 'user'
           };
           await addDoc(collection(this.firestore, 'Users'), newUser).then(
